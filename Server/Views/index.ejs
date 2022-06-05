@@ -7,8 +7,16 @@
     <link rel = 'stylesheet' href="./@fortawesome/fontawesome-free/css/all.min.css">
   </head>
   <body>
-    <h1>Hello World</h1>
-    <p>Home Page</p>
+    <header>
+      <!--navigation-->
+      <%- include('components/navbar.ejs'); %>
+    </header>
+    <main>
+      <%- include('content/' + page + '.ejs'); %>
+    </main>
+    <footer>
+      <%- include('components/footer.ejs'); %>
+    </footer>
     <!--Scripts-->
     <script src="./jquery/dist/jquery.min.js"></script>
     <script src="./bootstrap/dist/js/bootstrap.min.js"></script>
