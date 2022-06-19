@@ -6,10 +6,25 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from'morgan';
 
+import mongoose from "mongoose";
+
 import indexRouter from '../Routes/index';
 
 const app = express();
 
+//db config
+import * as DBConfig from "./db";
+mongoose.connect(DBConfig.LocalURI);
+const db = mongoose.connection;
+db.on("open",function(){
+  console.log(`Connected to MongoDB at: ${DBConfig.HostName}`)
+})
+db.on("error",function()
+{
+  console.error(`Connection Error`)
+})
+
+import { Db } from 'mongodb';
 // view engine setup
 app.set('views', path.join(__dirname, '../Views'));
 app.set('view engine', 'ejs');
