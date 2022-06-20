@@ -17,9 +17,18 @@ function DisplayBuisContacts(req, res, next) {
 }
 exports.DisplayBuisContacts = DisplayBuisContacts;
 function DisplayAdd(req, res, next) {
+    res.render('index', { title: 'Add', page: 'edit', contacts: '', displayName: (0, Util_1.UserDisplayName)(req) });
 }
 exports.DisplayAdd = DisplayAdd;
 function DisplayEdit(req, res, next) {
+    let id = req.params.id;
+    buisContact_1.default.findById(id, {}, {}, function (err, contactEdit) {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.render('index', { title: 'Edit', page: 'edit', contacts: contactEdit, displayName: (0, Util_1.UserDisplayName)(req) });
+    });
 }
 exports.DisplayEdit = DisplayEdit;
 function ProcessAdd(req, res, next) {
