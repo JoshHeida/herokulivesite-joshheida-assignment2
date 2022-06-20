@@ -36,11 +36,45 @@ export function DisplayEdit(req: express.Request, res: express.Response, next: e
 }
 export function ProcessAdd(req: express.Request, res: express.Response, next: express.NextFunction): void
 {
+    let newContact = new buisnessContacts
+    ({
+        "Name" : req.body.contactName,
+        "phNumber" : req.body.contactPhone,
+        "Email" : req.body.contactEmail
+    });
 
+    buisnessContacts.create(newContact, function(err)
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('/buisness-contacts')
+    });
 }
 export function ProcessEdit(req: express.Request, res: express.Response, next: express.NextFunction): void
 {
+    let id = req.params.id;
+    let updateContact = new buisnessContacts
+    ({
+        "_id": id,
+        "Name": req.body.contactName,
+        "phNumber": req.body.contactPhone,
+        "Email" : req.body.contactEmail
+    });
 
+    buisnessContacts.updateOne({_id:id}, updateContact, function(err:ErrorCallback)
+    {
+
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+        console.log(`contact added: ${req.body.contactName}`);
+        res.redirect("/buisness-contacts")
+    })
 }
 export function ProcessDelete(req: express.Request, res: express.Response, next: express.NextFunction): void
 {

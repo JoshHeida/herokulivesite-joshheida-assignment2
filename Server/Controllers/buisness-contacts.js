@@ -32,9 +32,36 @@ function DisplayEdit(req, res, next) {
 }
 exports.DisplayEdit = DisplayEdit;
 function ProcessAdd(req, res, next) {
+    let newContact = new buisContact_1.default({
+        "Name": req.body.contactName,
+        "phNumber": req.body.contactPhone,
+        "Email": req.body.contactEmail
+    });
+    buisContact_1.default.create(newContact, function (err) {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('/buisness-contacts');
+    });
 }
 exports.ProcessAdd = ProcessAdd;
 function ProcessEdit(req, res, next) {
+    let id = req.params.id;
+    let updateContact = new buisContact_1.default({
+        "_id": id,
+        "Name": req.body.contactName,
+        "phNumber": req.body.contactPhone,
+        "Email": req.body.contactEmail
+    });
+    buisContact_1.default.updateOne({ _id: id }, updateContact, function (err) {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        console.log(`contact added: ${req.body.contactName}`);
+        res.redirect("/buisness-contacts");
+    });
 }
 exports.ProcessEdit = ProcessEdit;
 function ProcessDelete(req, res, next) {
