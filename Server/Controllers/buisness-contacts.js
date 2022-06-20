@@ -11,7 +11,7 @@ function DisplayBuisContacts(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.render('index', { title: 'Buisness Contacts', page: 'buisness-contacts', contacts: contactColl });
+        res.render('index', { title: 'Buisness Contacts', page: 'buisness-contacts', contacts: contactColl, displayName: '' });
     });
 }
 exports.DisplayBuisContacts = DisplayBuisContacts;

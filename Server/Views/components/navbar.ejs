@@ -8,20 +8,33 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="/home"><i class="fa-solid fa-house-chimney-user"></i> Home</a>
+            <a class="nav-link <%= (page=='home') ? 'active' %>"  href="/home"><i class="fa-solid fa-house-chimney-user"></i> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about"><i class="fa-solid fa-chalkboard-user"></i> About</a>
+            <a class="nav-link <%= (page=='about') ? 'active' %>" href="/about"><i class="fa-solid fa-chalkboard-user"></i> About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/services"><i class="fa-solid fa-file-invoice"></i> Services</a>
+            <a class="nav-link <%= (page=='services') ? 'active' %>" href="/services"><i class="fa-solid fa-file-invoice"></i> Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/projects"><i class="fa-solid fa-person-digging"></i> Projects</a>
+            <a class="nav-link <%= (page=='projects') ? 'active' %>" href="/projects"><i class="fa-solid fa-person-digging"></i> Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact"><i class="fa-regular fa-address-card"></i> Contact</a>
+            <a class="nav-link<%= (page=='contact') ? 'active' %>" href="/contact"><i class="fa-regular fa-address-card"></i> Contact</a>
           </li>
+         
+          <% if (displayName){ %>
+            <li class="nav-item">
+              <a class="nav-link <%= (page=='buisness-contacts') ? 'active' %>" href="/buisness-contacts"><i class="fa-regular fa-briefcase"></i> Buisness Contacts</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link <%= (page=='logout') ? 'active' %>" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+          </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link <%= (page=='login') ? 'active' %>" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+            </li>
+            <% } %>
         </ul>
         
       </div>

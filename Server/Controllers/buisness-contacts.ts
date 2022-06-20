@@ -11,6 +11,6 @@ export function DisplayBuisContacts(req: express.Request, res: express.Response,
             console.error(err);
             res.end(err);
         }
-        res.render('index',{title: 'Buisness Contacts', page: 'buisness-contacts', contacts: contactColl})
+        res.render('index',{title: 'Buisness Contacts', page: 'buisness-contacts', contacts: contactColl,displayName: ''})
     });
 }
