@@ -1,4 +1,5 @@
 import express from "express";
+import { CallbackError } from "mongoose";
 
 import buisnessContacts from "../Models/buisContact";
 import { UserDisplayName } from "../Util";
@@ -43,7 +44,7 @@ export function ProcessAdd(req: express.Request, res: express.Response, next: ex
         "Email" : req.body.contactEmail
     });
 
-    buisnessContacts.create(newContact, function(err)
+    buisnessContacts.create(newContact, function(err:CallbackError)
     {
         if(err)
         {
@@ -64,7 +65,7 @@ export function ProcessEdit(req: express.Request, res: express.Response, next: e
         "Email" : req.body.contactEmail
     });
 
-    buisnessContacts.updateOne({_id:id}, updateContact, function(err:ErrorCallback)
+    buisnessContacts.updateOne({_id:id}, updateContact, function(err:CallbackError)
     {
 
         if(err)
@@ -72,11 +73,20 @@ export function ProcessEdit(req: express.Request, res: express.Response, next: e
             console.error(err);
             res.end(err);
         }
-        console.log(`contact added: ${req.body.contactName}`);
         res.redirect("/buisness-contacts")
     })
 }
 export function ProcessDelete(req: express.Request, res: express.Response, next: express.NextFunction): void
 {
+    let id = req.params.id;
 
+    buisnessContacts.remove({_id:id}, function(err:CallbackError)
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect("/buisness-contacts")
+    })
 }

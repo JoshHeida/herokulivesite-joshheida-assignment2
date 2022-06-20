@@ -59,12 +59,19 @@ function ProcessEdit(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        console.log(`contact added: ${req.body.contactName}`);
         res.redirect("/buisness-contacts");
     });
 }
 exports.ProcessEdit = ProcessEdit;
 function ProcessDelete(req, res, next) {
+    let id = req.params.id;
+    buisContact_1.default.remove({ _id: id }, function (err) {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect("/buisness-contacts");
+    });
 }
 exports.ProcessDelete = ProcessDelete;
 //# sourceMappingURL=buisness-contacts.js.map

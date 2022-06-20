@@ -12,6 +12,6 @@ router.get('/edit/:id', Util_1.AuthGuard, buisness_contacts_1.DisplayEdit);
 router.get('/add', Util_1.AuthGuard, buisness_contacts_1.DisplayAdd);
 router.post('/edit/:id', Util_1.AuthGuard, buisness_contacts_1.ProcessEdit);
 router.post('/add', Util_1.AuthGuard, buisness_contacts_1.ProcessAdd);
-router.post('/delete', Util_1.AuthGuard, buisness_contacts_1.ProcessDelete);
+router.get('/delete/:id', Util_1.AuthGuard, buisness_contacts_1.ProcessDelete);
 exports.default = router;
 //# sourceMappingURL=buisness-contacts.js.map

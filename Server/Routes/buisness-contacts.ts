@@ -14,6 +14,6 @@ router.post('/edit/:id',AuthGuard,ProcessEdit);
 //process Add
 router.post('/add',AuthGuard,ProcessAdd);
 //process Delete
-router.post('/delete',AuthGuard,ProcessDelete);
+router.get('/delete/:id',AuthGuard,ProcessDelete);
 
 export default router;
