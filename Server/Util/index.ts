@@ -4,7 +4,7 @@ export function UserDisplayName(req: Express.Request): string
 {
     if(req.user){
         let user = req.user as userDocument;
-        return user.DisplayName.toString();
+        return user.username.toString();
     }
     return ''
 ;}
