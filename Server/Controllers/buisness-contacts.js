@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DisplayBuisContacts = void 0;
+exports.ProcessDelete = exports.ProcessEdit = exports.ProcessAdd = exports.DisplayEdit = exports.DisplayAdd = exports.DisplayBuisContacts = void 0;
 const buisContact_1 = __importDefault(require("../Models/buisContact"));
 const Util_1 = require("../Util");
 function DisplayBuisContacts(req, res, next) {
@@ -16,4 +16,19 @@ function DisplayBuisContacts(req, res, next) {
     });
 }
 exports.DisplayBuisContacts = DisplayBuisContacts;
+function DisplayAdd(req, res, next) {
+}
+exports.DisplayAdd = DisplayAdd;
+function DisplayEdit(req, res, next) {
+}
+exports.DisplayEdit = DisplayEdit;
+function ProcessAdd(req, res, next) {
+}
+exports.ProcessAdd = ProcessAdd;
+function ProcessEdit(req, res, next) {
+}
+exports.ProcessEdit = ProcessEdit;
+function ProcessDelete(req, res, next) {
+}
+exports.ProcessDelete = ProcessDelete;
 //# sourceMappingURL=buisness-contacts.js.map
