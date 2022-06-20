@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, {PassportLocalSchema} from "mongoose";
 const Schema = mongoose.Schema;
-
+import passportLocalMongoose from 'passport-local-mongoose';
 const userSchema= new Schema
 ({
     Displayname: String,
@@ -18,7 +18,19 @@ const userSchema= new Schema
 },
 {
     collection:"users"
-})
+});
 
-const Model = mongoose.model("users",userSchema);
+declare global
+{
+    export type userDocument = mongoose.Document & 
+    {
+        username: String,
+        EmailAddress: String,
+        DisplayName:String
+    }
+}
+
+userSchema.plugin(passportLocalMongoose);
+
+const Model = mongoose.model("User",userSchema as PassportLocalSchema);
 export default Model;

@@ -8,9 +8,21 @@ import logger from'morgan';
 
 import mongoose from 'mongoose';
 
-import indexRouter from '../Routes/index';
-import secureRouter from '../Routes/buisness-contacts';
+import session from "express-session";
+import passport from 'passport';
+import passportLocal from 'passport-local';
+import flash from 'connect-flash';
 
+
+import cors from 'cors';
+
+let localStrategy = passportLocal.Strategy;
+
+import User from '../Models/user';
+
+import indexRouter from '../Routes/index';
+import contactsRouter from '../Routes/buisness-contacts';
+import authRouter from '../Routes/auth';
 const app = express();
 
 //db config
@@ -36,8 +48,28 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../Client')));
 app.use(express.static(path.join(__dirname,'../../node_modules')))
 
+app.use(cors());
+
+app.use(session({
+  secret: DBConfig.Secret,
+  saveUninitialized: false,
+  resave: false
+}));
+
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 app.use('/', indexRouter);
-app.use('/',secureRouter);
+app.use('/',contactsRouter);
+app.use('/',authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
