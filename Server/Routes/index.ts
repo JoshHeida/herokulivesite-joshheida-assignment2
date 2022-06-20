@@ -15,7 +15,8 @@ router.get('/services',DisplayServices);
 router.get('/projects',DisplayProjects);
 //contact page
 router.get('/contact',DisplayContact);
-
+//login page
+router.get('/login',)
 
 
 
