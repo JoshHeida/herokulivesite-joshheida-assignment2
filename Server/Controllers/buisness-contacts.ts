@@ -13,7 +13,7 @@ export function DisplayBuisContacts(req: express.Request, res: express.Response,
             res.end(err);
         }
         res.render('index',{title: 'Buisness Contacts', page: 'buisness-contacts', contacts: contactColl,displayName:  UserDisplayName(req)})
-    });
+    }).sort({Name:1});
 }
 
 export function DisplayAdd(req: express.Request, res: express.Response, next: express.NextFunction): void
@@ -82,7 +82,7 @@ export function ProcessDelete(req: express.Request, res: express.Response, next:
 
     buisnessContacts.remove({_id:id}, function(err:CallbackError)
     {
-        if(err)
+if(err)
         {
             console.error(err);
             res.end(err);
