@@ -1,3 +1,4 @@
+//app.ts josh heida 300644912 June 20 2022
 (function()
 {
     function Start()

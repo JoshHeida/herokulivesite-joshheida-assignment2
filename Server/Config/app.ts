@@ -1,5 +1,4 @@
-//Josh Heida 300644912
-//COMP 229 Sec 2 Assignment 1
+//app.ts josh heida 300644912 June 20 2022
 import createError from 'http-errors';
 import express, { NextFunction } from 'express';
 import path from 'path';
