@@ -1,3 +1,4 @@
+//user.ts josh heida 300644912 June 20 2022
 import mongoose, {PassportLocalSchema} from "mongoose";
 const Schema = mongoose.Schema;
 import passportLocalMongoose from 'passport-local-mongoose';

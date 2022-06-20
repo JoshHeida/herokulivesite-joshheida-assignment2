@@ -1,3 +1,4 @@
+<!--edit.ejs josh heida 300644912 June 20 2022-->
 <div class="container">
     <h1 class="col-lg-6 col-md-10 col-sm-10"><%= title %> Buisness Contact</h1>
     
@@ -31,6 +32,7 @@
         
         <% if(title == "Edit") { %>
         <button id="editButton" type="submit" class="btn btn-success"><i class="fas fa-edit fa-lg"></i> Edit</button>
+        <a href="/delete/<%=contacts._id %>" class="btn btn-danger btn-sm delete"><i class="fa-solid fa-user-slash"></i>Delete</a></td> 
         <% } else {%>
         <button id="addButton" type="submit" class="btn btn-success"><i class="fas fa-plus-circle fa-lg"></i> Add</button>
         <% } %>  
