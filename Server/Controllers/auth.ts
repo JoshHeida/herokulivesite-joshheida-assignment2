@@ -16,7 +16,30 @@ export function DisplayRegister(req: express.Request, res: express.Response, nex
 //Process
 export function ProcessLogin(req: express.Request, res: express.Response, next: express.NextFunction)
 {
-  
+  passport.authenticate('local',function(err, user, info)
+  {
+    if (err)
+    {
+        console.error(err);
+        res.end(err);
+    }
+
+    if(!user)
+    {
+        req.flash('loginMessage','Invalid Username or Password');
+        return res.redirect('/login');
+    }
+
+    req.logIn(user, function(err)
+    {
+        if(err)
+        {
+            console.error(err);
+            res.end(err);
+        }
+        return res.redirect('/buisness-contacts');
+    });
+  })(req, res, next);
 }
 export function ProcessRegister(req: express.Request, res: express.Response, next: express.NextFunction)
 {
