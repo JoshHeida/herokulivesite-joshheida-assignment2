@@ -43,10 +43,34 @@ export function ProcessLogin(req: express.Request, res: express.Response, next: 
 }
 export function ProcessRegister(req: express.Request, res: express.Response, next: express.NextFunction)
 {
-  
+  let newUser = new User({
+    username: req.body.username,
+    EmailAddress: req.body.emailAddress,
+    DisplayName: req.body.firstName + " " + req.body.lastName
+  });
+  User.register(newUser, req.body.password, function(err)
+  {
+    if(err){
+        if(err.name == "UserExistsError")
+        {
+            console.error('ERROR: User already exists');
+            req.flash('registerMessage', 'Registration Error');
+        }else{
+            console.error(err.name);
+            req.flash('registerMessage', 'Server Error');
+        }
+        return res.redirect('/register');
+    }
+    return passport.authenticate('local')(req,res,function()
+    {
+        return res.redirect('/buisness-contacts');
+    })
+  });
 }
 export function ProcessLogout(req: express.Request, res: express.Response, next: express.NextFunction)
 {
+    req.logout();
+    res.redirect('/login');
 
 }
 
