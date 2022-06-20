@@ -8,11 +8,17 @@ const user_1 = __importDefault(require("../Models/user"));
 const passport_1 = __importDefault(require("passport"));
 const Util_1 = require("../Util");
 function DisplayLogin(req, res, next) {
-    res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
+    if (!req.user) {
+        return res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
+    }
+    return res.redirect('/buisness-contacts');
 }
 exports.DisplayLogin = DisplayLogin;
 function DisplayRegister(req, res, next) {
-    res.render('index', { title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
+    if (!req.user) {
+        return res.render('index', { title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
+    }
+    return res.redirect('/buisness-contacts');
 }
 exports.DisplayRegister = DisplayRegister;
 function ProcessLogin(req, res, next) {
