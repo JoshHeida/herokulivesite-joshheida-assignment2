@@ -27,7 +27,7 @@ const app = express();
 
 //db config
 import * as DBConfig from "./db";
-mongoose.connect(DBConfig.LocalURI);
+mongoose.connect(DBConfig.RemoteURI);
 const db = mongoose.connection;
 db.on("open",function(){
   console.log(`Connected to MongoDB at: ${DBConfig.HostName}`)
