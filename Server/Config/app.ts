@@ -49,6 +49,7 @@ app.use(express.static(path.join(__dirname,'../../node_modules')))
 
 app.use(cors());
 
+//authentication config
 app.use(session({
   secret: DBConfig.Secret,
   saveUninitialized: false,
@@ -65,7 +66,7 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
+//router use
 app.use('/', indexRouter);
 app.use('/',contactsRouter);
 app.use('/',authRouter);
