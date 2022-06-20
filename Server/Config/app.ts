@@ -6,7 +6,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from'morgan';
 
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 import indexRouter from '../Routes/index';
 
@@ -24,7 +24,6 @@ db.on("error",function()
   console.error(`Connection Error`)
 })
 
-import { Db } from 'mongodb';
 // view engine setup
 app.set('views', path.join(__dirname, '../Views'));
 app.set('view engine', 'ejs');

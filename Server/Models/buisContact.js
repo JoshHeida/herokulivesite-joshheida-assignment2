@@ -7,8 +7,10 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 const buisContactsSchema = new Schema({
     Name: String,
-    PhNumber: String,
+    phNumber: String,
     Email: String
+}, {
+    collection: "buisnessContacts"
 });
 const Model = mongoose_1.default.model("buisnessContacts", buisContactsSchema);
 exports.default = Model;

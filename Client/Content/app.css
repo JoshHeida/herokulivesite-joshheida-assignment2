@@ -148,3 +148,8 @@ html{
     padding-top: 10px;
     margin-left:200px;
 }
+#buisContents{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}

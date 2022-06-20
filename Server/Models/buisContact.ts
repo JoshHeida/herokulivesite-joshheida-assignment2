@@ -4,8 +4,11 @@ const Schema = mongoose.Schema;
 const buisContactsSchema= new Schema
 ({
     Name: String,
-    PhNumber: String,
+    phNumber: String,
     Email: String
+},
+{
+    collection:"buisnessContacts"
 })
 
 const Model = mongoose.model("buisnessContacts",buisContactsSchema);
