@@ -1,3 +1,4 @@
+//index.ts josh heida 300644912 June 20 2022
 import express from "express";
 
 export function UserDisplayName(req: Express.Request): string

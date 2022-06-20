@@ -1,6 +1,6 @@
 //auth.ts josh heida 300644912 June 20 2022
 import express from 'express';
-import { DisplayLogin, DisplayRegister, ProcessLogin, ProcessLogout, ProcessRegister } from '../Controllers/auth';
+import { DisplayLogin, ProcessLogin, ProcessLogout } from '../Controllers/auth';
 
 const router = express.Router();
 
